@@ -1,0 +1,31 @@
+{% load static %}
+
+<div class="position-relative">
+    <img src="{% static 'images/sunset_header.jpg' %}" alt="Sunset" width="1800px" class="img-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary position-absolute w-100 mb-5">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Posts
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for blogPost in AllBlogPosts %}
+                                <li><a class="dropdown-item" href={{ blogPost.id }}>{{ blogPost.title_text }}</a></li>
+                            {% endfor %}
+                            <li><a class="dropdown-item" href="{% url 'new_post' %}">Create new post</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
