@@ -23,8 +23,7 @@ from blog.views import Index, AllBlogPosts, SingleBlogPost, CreateBlogPost
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index.as_view(), name='index'),
-    path('new-post/', CreateBlogPost.as_view(), name='new_post'),
-    path('all-posts/', AllBlogPosts.as_view(), name='all_blog_posts'),
-    path('read-post/<int:pk>', SingleBlogPost.as_view(), name='single_post')
-
+    path('new-post/', CreateBlogPost.as_view(), name='new-post'),
+    path('all-posts/', AllBlogPosts.as_view(), name='all-blog-posts'),
+    path('read-post/<int:pk>/', SingleBlogPost.as_view(), name='single-post')
 ]

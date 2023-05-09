@@ -1,9 +1,31 @@
 <h1>All Blog Posts</h1>
 
 
+{% for blog_post in blog_posts %}
 
-    {% for blog_post in blog_posts %}
+<tr>
+    <td> ID
+        <h1> {{ blog_post.id }} </h1>
+    </td>
+    <td>Tiitel text
+        <h1> {{ blog_post.title_text }} </h1>
+    </td>
+    <td>juttu palju
+        <h1> {{ blog_post.paragraph }} </h1>
+    </td>
+    <td> autori nimi
+        <h1> {{ blog_post.author_name }} </h1>
+    </td>
 
-           <h1> {{ blog_post.title_text }} </h1>
+</tr>
 
-    {% endfor %}
+{% endfor %}
+
+
+
+
+
+
+
+
+

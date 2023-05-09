@@ -15,10 +15,11 @@
                             Posts
                         </a>
                         <ul class="dropdown-menu">
-                            {% for blogPost in AllBlogPosts %}
-                                <li><a class="dropdown-item" href={{ blogPost.id }}>{{ blogPost.title_text }}</a></li>
+                            {% for blog_post in object_list %}
+                                <li><a class="dropdown-item" href={{ blog_postpost.id }}>{{ blog_post.title_text }}</a>
+                                </li>
                             {% endfor %}
-                            <li><a class="dropdown-item" href="{% url 'new_post' %}">Create new post</a></li>
+                            <li><a class="dropdown-item" href="{% url 'new-post' %}">Create new post</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

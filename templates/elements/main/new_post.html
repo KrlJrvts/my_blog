@@ -1,19 +1,20 @@
+{% load static %}
 <h1>Create a New Blog Post</h1>
-<form method="post">
+<form method="post" action="{% url 'new_post' %}">
     {% csrf_token %}
     <div>
-        <label for="id_title_text">Title:</label>
-        <input type="text" id="id_title_text" name="title" required>
+        <label for="title_text">Title:</label>
+        <input type="text" id="title_text" name="title" required>
     </div>
     <div>
-        <label for="id_paragraph">Paragraph:</label>
-        <textarea id="id_paragraph" name="paragraph" rows="6" required></textarea>
+        <label for="paragraph">Paragraph:</label>
+        <textarea id="paragraph" name="paragraph" rows="6" required></textarea>
     </div>
     <div>
-        <label for="id_author_name">Author:</label>
-        <input type="text" id="id_author_name" name="author_name" required>
+        <label for="author_name">Author:</label>
+        <input type="text" id="author_name" name="author_name" required>
     </div>
     <button type="submit">Post</button>
 </form>
 
-
+<script src="{% static 'scripts/scripts.js' %}"></script>
