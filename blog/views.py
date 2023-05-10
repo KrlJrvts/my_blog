@@ -60,4 +60,4 @@ class DeleteBlogPost(View):
 
 class AboutPage(View):
     def get(self, request):
-        return render(request, 'http://127.0.0.1:8000/about.html')
+        return render(request, 'about.html')
