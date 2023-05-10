@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -15,10 +15,12 @@
                             Posts
                         </a>
                         <ul class="dropdown-menu">
-                            {% for blog_post in object_list %}
-                                <li><a class="dropdown-item" href={{ blog_postpost.id }}>{{ blog_post.title_text }}</a>
-                                </li>
+                            {% for post in object_list %}
+                            <li><a class="dropdown-item" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></li>
                             {% endfor %}
+
+
+
                             <li><a class="dropdown-item" href="{% url 'new-post' %}">Create new post</a></li>
                         </ul>
                     </li>

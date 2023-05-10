@@ -1,0 +1,20 @@
+<h1>All Blog Posts</h1>
+
+
+
+{% for post in object_list %}
+
+    <h2><a href="{{ post.id }}">{{ post.title }}</a></h2>
+    <p>{{ post.body|truncatewords:30 }}</p>
+    <p>{{ post.created_at| date }}</p>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+

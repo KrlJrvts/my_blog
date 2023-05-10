@@ -19,21 +19,10 @@
     </div>
 </div>
 
-
 <div class="container">
-    <div class="container">
-        {% for blog_post in blog_posts %}
-            <div class="mb-4">
-                <h1>ID: {{ blog_post.id }}</h1>
-                <h1>Title: {{ blog_post.title_text }}</h1>
-                <p>Paragraph: {{ blog_post.paragraph }}</p>
-                <p>Author: {{ blog_post.author_name }}</p>
-            </div>
-        {% endfor %}
-    </div>
-
     <div class="d-flex justify-content-center" style="padding-bottom: 5%">
         <div id="content-container">
+            swap elements on the page
             {% block content %}
                 {% include 'elements/main/all_posts.html' %}
             {% endblock %}
@@ -48,6 +37,28 @@
         {% endblock %}
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.menu-item').click(function() {
+            let menuItemIndex = $(this).index();
+            let articles = $('#content-container .article');
+
+            // Check if the clicked menu item index is within the range of the articles
+            if (menuItemIndex >= 0 && menuItemIndex < articles.length) {
+                let selectedArticle = articles.eq(menuItemIndex);
+                articles.hide();
+                selectedArticle.show();
+            }
+        });
+
+        $('.article').click(function() {
+            $('.article').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+</script>
 
 </body>
 </html>

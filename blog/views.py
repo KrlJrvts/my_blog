@@ -8,18 +8,24 @@ from .models import BlogPost
 class AllBlogPosts(ListView):
     template_name = 'elements/main/all_posts.html'
     model = BlogPost
-    context_object_name = 'blog_posts'
 
 
 class SingleBlogPost(DetailView):
-    template_name = 'elements/main/read_post.html'
+    template_name = 'elements/main/single_post.html'
     model = BlogPost
 
 
 class CreateBlogPost(CreateView):
-    template_name = 'elements/main/new_post.html'
+    template_name = 'elements/main/create_post.html'
     model = BlogPost
-    fields = ['title_text', 'paragraph', 'author_name']
+    fields = ['title', 'paragraph', 'author_name']
+
+
+class DeleteBlogPost(View):
+    def get(self, request, post_id):
+        post = BlogPost.objects.get(id=post_id)
+        post.delete()
+        return render(request, 'elements/main/all_posts.html')
 
 
 class Index(View):
