@@ -9,9 +9,35 @@ class AllBlogPosts(ListView):
     model = BlogPost
 
 
-class SingleBlogPost(DetailView):
-    template_name = 'single_post.html'
+def get_all_posts(request):
+    all_posts = BlogPost.objects.all()
+    return render(
+        request,
+        'all_posts.html',
+        {
+            'all_posts': all_posts,
+            'title': 'All Posts',
+        }
+    )
+
+
+class Navigation(ListView):
+    template_name = 'all_posts.html'
     model = BlogPost
+
+
+def get_single_post(request, post_id):
+    post = BlogPost.objects.get(id=post_id)
+    all_posts = BlogPost.objects.all()
+    return render(
+        request,
+        'single_post.html',
+        {
+            'post': post,
+            'all_posts': all_posts,
+            'title': 'Single Post',
+        }
+    )
 
 
 class CreateBlogPost(CreateView):
@@ -34,4 +60,4 @@ class DeleteBlogPost(View):
 
 class AboutPage(View):
     def get(self, request):
-        return render(request, 'about.html')
+        return render(request, 'http://127.0.0.1:8000/about.html')

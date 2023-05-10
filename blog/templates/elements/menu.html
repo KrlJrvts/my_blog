@@ -15,7 +15,7 @@
                             Posts
                         </a>
                         <ul class="dropdown-menu">
-                            {% for post in object_list %}
+                            {% for post in all_posts %}
                             <li><a class="dropdown-item" href="{% url 'single-post' post.id %}">{{ post.title }}</a></li>
                             {% endfor %}
                             <li><a class="dropdown-item" href="{% url 'new-post' %}">Create new post</a></li>
