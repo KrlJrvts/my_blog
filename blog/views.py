@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, View
 from .models import BlogPost
+from django.urls import reverse_lazy
 
 
 class AllBlogPosts(ListView):
@@ -17,6 +18,11 @@ class CreateBlogPost(CreateView):
     template_name = 'create_post.html'
     model = BlogPost
     fields = ['title', 'paragraph', 'author_name']
+    success_url = reverse_lazy('all-blog-posts')
+
+    def form_valid(self, form):
+        form.instance.author_name = self.request.user
+        return super().form_valid(form)
 
 
 class DeleteBlogPost(View):
