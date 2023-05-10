@@ -3,8 +3,6 @@ from django.views.generic import ListView, DetailView, CreateView, View
 from .models import BlogPost
 
 
-# Create your views here.
-
 class AllBlogPosts(ListView):
     template_name = 'all_posts.html'
     model = BlogPost
@@ -31,4 +29,3 @@ class DeleteBlogPost(View):
 class AboutPage(View):
     def get(self, request):
         return render(request, 'about.html')
-

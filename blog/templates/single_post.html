@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,7 +12,7 @@
 <body>
 
 <div class="container">
-    <div class="d-flex justify-content-center" style="padding-bottom: 5%">
+    <div class="d-flex justify-content-center" style="padding-bottom: 7%">
         {% block menu %}
             {% include 'elements/menu.html' %}
         {% endblock %}
@@ -22,16 +22,33 @@
 <div class="container">
     <div class="d-flex justify-content-center" style="padding-bottom: 5%">
         <div id="content-container">
-            <h1> here will be only single post visible</h1>
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.paragraph|truncatewords:30 }}</p>
-            <p>{{ post.created_at|date }}</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm fs-1 text-center">
+                        <h1>{{ object.title }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm fs-2 text-break">
+                        <p>{{ object.paragraph|truncatewords:30 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm text-end">
+                        <p>{{ object.created_at|date }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="d-flex justify-content-center" style="padding-bottom: 5%">
+    <div class="d-flex justify-content-center sticky-bottom" style="padding-bottom: 5%">
         {% block footer %}
             {% include 'elements/footer.html' %}
         {% endblock %}
