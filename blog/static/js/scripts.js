@@ -1,3 +1,3 @@
 function redirectToIndex() {
-    window.location.href = "{% url 'index' %}";
+    window.location.href = "{% url 'all-blog-posts' %}";
 }

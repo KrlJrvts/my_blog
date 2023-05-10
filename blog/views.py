@@ -6,17 +6,17 @@ from .models import BlogPost
 # Create your views here.
 
 class AllBlogPosts(ListView):
-    template_name = 'elements/main/all_posts.html'
+    template_name = 'all_posts.html'
     model = BlogPost
 
 
 class SingleBlogPost(DetailView):
-    template_name = 'elements/main/single_post.html'
+    template_name = 'single_post.html'
     model = BlogPost
 
 
 class CreateBlogPost(CreateView):
-    template_name = 'elements/main/create_post.html'
+    template_name = 'create_post.html'
     model = BlogPost
     fields = ['title', 'paragraph', 'author_name']
 
@@ -25,9 +25,10 @@ class DeleteBlogPost(View):
     def get(self, request, post_id):
         post = BlogPost.objects.get(id=post_id)
         post.delete()
-        return render(request, 'elements/main/all_posts.html')
+        return render(request, 'all_posts.html')
 
 
-class Index(View):
+class AboutPage(View):
     def get(self, request):
-        return render(request, 'index.html')
+        return render(request, 'about.html')
+
