@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 class AllBlogPosts(ListView):
     template_name = 'all_posts.html'
     model = BlogPost
+    context_object_name = 'all_posts'
 
 
 def get_single_post(request, post_id):
@@ -45,8 +46,9 @@ class DeleteBlogPost(View):
 
 
 class AboutPage(View):
-    def get(self, request):
-        return render(request, 'about.html')
+    template_name = 'about.html'
 
-    def get_absolute_url(self):
-        return reverse_lazy('about-page')
+    def get(self, request):
+        all_posts = BlogPost.objects.all()
+        context = {'all_posts': all_posts}
+        return render(request, context=context, template_name='about.html')
