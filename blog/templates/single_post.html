@@ -38,6 +38,10 @@
             </div>
             <div class="container">
                 <div class="row">
+                    <div class="col-sm text-start">
+                        <p>Created by: {{ post.author_name }}</p>
+                    </div>
+
                     <div class="col-sm text-end">
                         <p>{{ post.created_at|date }}</p>
                     </div>
