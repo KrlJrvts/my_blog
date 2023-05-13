@@ -25,21 +25,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm fs-1 text-center">
-                        <h1>{{ object.title }}</h1>
+                        <h1>{{ post.title }}</h1>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-sm fs-2 text-break">
-                        <p>{{ object.paragraph|truncatewords:30 }}</p>
+                        <p>{{ post.paragraph|truncatewords:30 }}</p>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-sm text-end">
-                        <p>{{ object.created_at|date }}</p>
+                        <p>{{ post.created_at|date }}</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm text-end">
-                            delete button here
+                            <button type="submit" form="new-post" class="btn btn-secondary">
+                                <a href="{% url 'delete-post' post.id %}" class="text-decoration-none text-white">
+                                    Delete
+                                </a>
+                            </button>
+
                         </div>
                     </div>
                 </div>
