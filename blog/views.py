@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, View, UpdateView
 from .models import BlogPost
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 
 class AllBlogPosts(ListView):
@@ -48,16 +48,15 @@ class EditBlogPost(UpdateView):
 
 class DeleteBlogPost(View):
     model = BlogPost
-    success_url = reverse_lazy('all-blog-posts')
 
     def get(self, request, post_id):
         post = BlogPost.objects.get(id=post_id)
         post.delete()
-        return render(request, 'all_posts.html')
+        success_url = reverse('all-blog-posts')
+        return redirect(success_url)
 
 
 class AboutPage(View):
-    template_name = 'about.html'
 
     def get(self, request):
         all_posts = BlogPost.objects.all()
