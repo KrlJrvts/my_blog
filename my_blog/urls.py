@@ -11,5 +11,3 @@ urlpatterns = [
     path('about/', AboutPage.as_view(), name='about-page'),
 
 ]
-
-#
