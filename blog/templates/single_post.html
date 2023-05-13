@@ -46,13 +46,20 @@
             <div>
                 <div class="container">
                     <div class="row">
+
+                        <div class="col-sm text-start">
+                            <button type="submit" form="new-post" class="btn btn-secondary">
+                                <a href="{% url 'edit-post' post.id %}" class="text-decoration-none text-white">
+                                    Edit
+                                </a>
+                            </button>
+                        </div>
                         <div class="col-sm text-end">
                             <button type="submit" form="new-post" class="btn btn-secondary">
                                 <a href="{% url 'delete-post' post.id %}" class="text-decoration-none text-white">
                                     Delete
                                 </a>
                             </button>
-
                         </div>
                     </div>
                 </div>

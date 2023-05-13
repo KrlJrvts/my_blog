@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, View
+from django.views.generic import ListView, DetailView, CreateView, View, UpdateView
 from .models import BlogPost
 from django.urls import reverse_lazy
 
@@ -26,6 +26,17 @@ def get_single_post(request, post_id):
 
 class CreateBlogPost(CreateView):
     template_name = 'create_post.html'
+    model = BlogPost
+    fields = ['title', 'paragraph', 'author_name']
+    success_url = reverse_lazy('all-blog-posts')
+
+    def form_valid(self, form):
+        form.instance.author_name = self.request.user
+        return super().form_valid(form)
+
+
+class EditBlogPost(UpdateView):
+    template_name = 'edit_post.html'
     model = BlogPost
     fields = ['title', 'paragraph', 'author_name']
     success_url = reverse_lazy('all-blog-posts')
