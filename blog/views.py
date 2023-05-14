@@ -1,4 +1,5 @@
 import json
+from os import environ
 
 import requests
 from django.shortcuts import render, redirect
@@ -15,6 +16,7 @@ class AllBlogPosts(ListView):
     context_object_name = 'all_posts'
 
     def get_context_data(self, **kwargs):
+        api_key = environ.get('api_key')
         context = super().get_context_data(**kwargs)
         city = self.request.GET.get('city')
         if not city:
@@ -25,7 +27,7 @@ class AllBlogPosts(ListView):
             context['error_message'] = error_message
             context['show_modal'] = True
             return context
-        api_url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=5847d008c20b2a95956c42f581f481c6'
+        api_url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
         response = requests.get(api_url)
         if response.status_code != 200:
             error_message = f'Error: {response.status_code}'
