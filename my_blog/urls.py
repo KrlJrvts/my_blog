@@ -1,6 +1,14 @@
 from django.contrib import admin
 from django.urls import path
-from blog.views import AllBlogPosts, CreateBlogPost, DeleteBlogPost, AboutPage, get_single_post, EditBlogPost
+from blog.views import (
+    AllBlogPosts,
+    CreateBlogPost,
+    DeleteBlogPost,
+    AboutPage,
+    get_single_post,
+    EditBlogPost,
+
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

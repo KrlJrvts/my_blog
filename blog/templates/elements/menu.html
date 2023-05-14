@@ -1,7 +1,10 @@
 {% load static %}
 
+
 <div class="position-relative">
     <img src="{% static 'images/sunset_header.jpg' %}" alt="Sunset" width="1800px" class="img-fluid">
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary position-absolute w-100 mb-5">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -16,7 +19,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% for post in all_posts %}
-                            <li><a class="dropdown-item" href="{% url 'single-post' post.id %}">{{ post.title }}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'single-post' post.id %}">{{ post.title }}</a>
+                                </li>
                             {% endfor %}
                             <li><a class="dropdown-item" href="{% url 'new-post' %}">Create new post</a></li>
                         </ul>

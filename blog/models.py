@@ -15,3 +15,8 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return f'{self.title} - {self.author_name}'
+
+
+class Cities(models.Model):
+    name = models.CharField(max_length=128, null=False, blank=False, db_index=True)
+    country = models.CharField(max_length=128, null=False, blank=False, db_index=True)

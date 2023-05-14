@@ -22,12 +22,56 @@
 <div class="container w-50">
     <div class="d-flex justify-content-center" style="padding-bottom: 5%">
         <div id="content-container">
+            <div class="container mb-4">
+                <div class="row">
+                    <div class="col-sm fs-4 text-break">
+                        <div class="weather-widget position-sticky top-0 end-0 mt-5 me-5 rounded p-3"
+                             style="background-color: rgba(22,18,63,0.5)">
+                            <div class="row">
+                                <div class="col-sm-2 fs-1 text-break">
+                                    <div class="weather-icon">
+                                        <img src="https://openweathermap.org/img/w/{{ icon }}.png" style="width: 100px"
+                                             alt="Weather Icon">
+                                    </div>
+                                </div>
+                                <div class="col-sm fs-4 text-break">
+                                    <div>
+                                        <p>
+                                            {{ name }}</p>
+                                    </div>
+                                    <div>
+                                        <p>{{ temperature }} C</p>
+                                    </div>
+                                    <div>
+                                        <p>{{ description }} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm fs-4 text-break">
+                                    <div class="col-sm fs-4 text-break">
+                                        <form method="GET">
+                                            <div class="input-group">
+                                                <input type="text" name="city" class="form-control"
+                                                       placeholder="City name" id="city" aria-label="City name">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-search"></i> Search
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% for post in object_list %}
                 <div class="container mb-5">
                     <div class="row">
                         <div class="col-sm fs-1">
                             <a href="{% url 'single-post' post.id %}"
-                       class="link-light text-decoration-none"> {{ post.title }}</a>
+                               class="link-light text-decoration-none"> {{ post.title }}</a>
                         </div>
                     </div>
                 </div>
