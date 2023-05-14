@@ -6,7 +6,7 @@ from django.views.generic import ListView, CreateView, View, UpdateView
 from .models import BlogPost, Cities
 import requests
 import json
-from .utils.weatherwidget import kelvin_to_celsius
+from .utils import weatherwidget, datetimeconverter
 
 
 class AllBlogPosts(ListView):
@@ -33,11 +33,16 @@ class AllBlogPosts(ListView):
             context['show_modal'] = True
             return context
         weather_data = json.loads(response.text)
-        temperature = kelvin_to_celsius(weather_data['main']['temp'])
+        sunrise = datetimeconverter.datetimeconverter(weather_data['sys']['sunrise'])
+        sunset = datetimeconverter.datetimeconverter(weather_data['sys']['sunset'])
+        temperature = weatherwidget.kelvin_to_celsius(weather_data['main']['temp'])
         context['icon'] = weather_data['weather'][0]['icon']
         context['name'] = weather_data['name']
         context['temperature'] = temperature
         context['description'] = weather_data['weather'][0]['description']
+        context['country'] = weather_data['sys']['country']
+        context['sunrise'] = sunrise
+        context['sunset'] = sunset
         return context
 
 
