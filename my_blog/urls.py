@@ -7,6 +7,7 @@ from blog.views import (
     AboutPage,
     get_single_post,
     EditBlogPost,
+    ErrorPopupView,
 
 )
 
@@ -18,5 +19,6 @@ urlpatterns = [
     path('delete-post/<int:post_id>/', DeleteBlogPost.as_view(), name='delete-post'),
     path('about/', AboutPage.as_view(), name='about-page'),
     path('edit-post/<int:pk>/', EditBlogPost.as_view(), name='edit-post'),
+    path('error/', ErrorPopupView.as_view(), name='error-popup'),
 
 ]

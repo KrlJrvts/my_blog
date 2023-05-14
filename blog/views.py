@@ -15,29 +15,30 @@ class AllBlogPosts(ListView):
     context_object_name = 'all_posts'
 
     def get_context_data(self, **kwargs):
-
+        context = super().get_context_data(**kwargs)
         city = self.request.GET.get('city')
+        if not city:
+            city = 'London'
         check_city = Cities.objects.filter(name=city)
         if not check_city:
-            city = 'London'
-
+            error_message = 'City not found'
+            context['error_message'] = error_message
+            context['show_modal'] = True
+            return context
         api_url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=5847d008c20b2a95956c42f581f481c6'
-
         response = requests.get(api_url)
-
-        """ add error handling"""
         if response.status_code != 200:
-            return HttpResponse(f'Error: {response.status_code}')
-
+            error_message = f'Error: {response.status_code}'
+            context['error_message'] = error_message
+            context['show_modal'] = True
+            return context
         weather_data = json.loads(response.text)
         temperature = kelvin_to_celsius(weather_data['main']['temp'])
-        context = {
-            'icon': weather_data['weather'][0]['icon'],
-            'name': weather_data['name'],
-            'temperature': temperature,
-            'description': weather_data['weather'][0]['description']
-        }
-        return super().get_context_data(**context, **kwargs)
+        context['icon'] = weather_data['weather'][0]['icon']
+        context['name'] = weather_data['name']
+        context['temperature'] = temperature
+        context['description'] = weather_data['weather'][0]['description']
+        return context
 
 
 def get_single_post(request, post_id):
@@ -93,3 +94,7 @@ class AboutPage(View):
         context = {'all_posts': all_posts}
         return render(request, context=context, template_name='about.html')
 
+
+class ErrorPopupView(View):
+    def get(self, request):
+        return render(request, template_name='error.html')
