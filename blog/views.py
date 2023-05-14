@@ -19,7 +19,7 @@ class AllBlogPosts(ListView):
         city = self.request.GET.get('city')
         check_city = Cities.objects.filter(name=city)
         if not check_city:
-            city = 'Tallinn'
+            city = 'London'
 
         api_url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=5847d008c20b2a95956c42f581f481c6'
 
