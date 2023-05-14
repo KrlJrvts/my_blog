@@ -1,16 +1,28 @@
-<div class="container mb-4">
+<div class="container mb-4 w-50">
     <div class="row">
         <div class="col-sm fs-4 text-break">
             <div class="weather-widget position-sticky top-0 end-0 mt-5 me-5 rounded p-3"
                  style="background-color: rgba(22,18,63,0.5)">
                 <div class="row">
-                    <div class="col-sm-2 fs-1 text-break">
+                    <div class="col-sm-6 fs-1 text-break">
                         <div class="weather-icon">
                             <img src="https://openweathermap.org/img/w/{{ icon }}.png" style="width: 100px"
                                  alt="Weather Icon">
                         </div>
+                        <div class="col-sm fs-5 text-break">
+                            <p>Sunrise</p>
+                        </div>
+                        <div class="col-sm fs-5 text-break">
+                            <p>{{ sunrise }}</p>
+                        </div>
+                        <div class="col-sm fs-5 text-break">
+                            <p>Sunset</p>
+                        </div>
+                        <div class="col-sm fs-5 text-break">
+                            <p>{{ sunset }}</p>
+                        </div>
                     </div>
-                    <div class="col-sm fs-4 text-break">
+                    <div class="col-sm-6 fs-4 text-break">
                         <div>
                             <p>{{ name }} at {{ country }}</p>
                         </div>
@@ -19,26 +31,6 @@
                         </div>
                         <div>
                             <p>{{ description }} </p>
-                        </div>
-                    </div>
-                    <div class="col-sm fs-4 text-break">
-
-                        <div class="row">
-                            <div class="col-sm fs-5 text-break">
-                                <p>Sunrise</p>
-                            </div>
-                            <div class="col-sm fs-5 text-break">
-                                <p>Sunset</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm fs-5 text-break">
-                                <p>{{ sunrise }}</p>
-                            </div>
-                            <div class="col-sm fs-5 text-break">
-                                <p>{{ sunset }}</p>
-                            </div>
-
                         </div>
                         <div class="col-sm fs-4 text-break mb-4">
                             <form method="GET">

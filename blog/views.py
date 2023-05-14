@@ -1,11 +1,11 @@
-from django.http import HttpResponse
+import json
+
+import requests
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, View, UpdateView
 
 from .models import BlogPost, Cities
-import requests
-import json
 from .utils import weatherwidget, datetimeconverter
 
 
